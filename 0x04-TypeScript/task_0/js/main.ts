@@ -1,3 +1,4 @@
+// Define Student interface
 interface Student {
   firstName: string;
   lastName: string;
@@ -5,6 +6,7 @@ interface Student {
   location: string;
 }
 
+// Create two students
 const student1: Student = {
   firstName: 'John',
   lastName: 'Doe',
@@ -19,36 +21,38 @@ const student2: Student = {
   location: 'Los Angeles'
 };
 
+// Create studentsList array
 const studentsList: Student[] = [student1, student2];
 
-document.addEventListener('DOMContentLoaded', () => {
-  const table = document.createElement('table');
-  const tbody = document.createElement('tbody');
+// Create and render table
+const table = document.createElement('table');
+const tbody = document.createElement('tbody');
+
+// Create table header
+const headerRow = document.createElement('tr');
+const firstNameHeader = document.createElement('th');
+firstNameHeader.textContent = 'First Name';
+const locationHeader = document.createElement('th');
+locationHeader.textContent = 'Location';
+
+headerRow.appendChild(firstNameHeader);
+headerRow.appendChild(locationHeader);
+tbody.appendChild(headerRow);
+
+// Create rows for each student
+studentsList.forEach((student: Student) => {
+  const row = document.createElement('tr');
   
-  const headerRow = document.createElement('tr');
-  const header1 = document.createElement('th');
-  header1.textContent = 'First Name';
-  const header2 = document.createElement('th');
-  header2.textContent = 'Location';
+  const firstNameCell = document.createElement('td');
+  firstNameCell.textContent = student.firstName;
   
-  headerRow.appendChild(header1);
-  headerRow.appendChild(header2);
-  tbody.appendChild(headerRow);
+  const locationCell = document.createElement('td');
+  locationCell.textContent = student.location;
   
-  studentsList.forEach((student) => {
-    const row = document.createElement('tr');
-    
-    const firstNameCell = document.createElement('td');
-    firstNameCell.textContent = student.firstName;
-    
-    const locationCell = document.createElement('td');
-    locationCell.textContent = student.location;
-    
-    row.appendChild(firstNameCell);
-    row.appendChild(locationCell);
-    tbody.appendChild(row);
-  });
-  
-  table.appendChild(tbody);
-  document.body.appendChild(table);
+  row.appendChild(firstNameCell);
+  row.appendChild(locationCell);
+  tbody.appendChild(row);
 });
+
+table.appendChild(tbody);
+document.body.appendChild(table);
