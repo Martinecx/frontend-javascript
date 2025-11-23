@@ -1,4 +1,6 @@
-// Define Student interface
+// TypeScript Task 0: Student Interface and Table
+// This file defines a Student interface and renders a table of students
+
 interface Student {
   firstName: string;
   lastName: string;
@@ -6,7 +8,6 @@ interface Student {
   location: string;
 }
 
-// Create two students
 const student1: Student = {
   firstName: 'John',
   lastName: 'Doe',
@@ -21,14 +22,11 @@ const student2: Student = {
   location: 'Los Angeles'
 };
 
-// Create studentsList array
 const studentsList: Student[] = [student1, student2];
 
-// Create and render table
 const table = document.createElement('table');
 const tbody = document.createElement('tbody');
 
-// Create table header
 const headerRow = document.createElement('tr');
 const firstNameHeader = document.createElement('th');
 firstNameHeader.textContent = 'First Name';
@@ -39,7 +37,6 @@ headerRow.appendChild(firstNameHeader);
 headerRow.appendChild(locationHeader);
 tbody.appendChild(headerRow);
 
-// Create rows for each student
 studentsList.forEach((student: Student) => {
   const row = document.createElement('tr');
   
